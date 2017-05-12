@@ -11,7 +11,7 @@ const propTypes = {
   examples: PropTypes.any,
 };
 
-export default class ExamplePicker extends React.Component {
+export default class Picker extends React.Component {
   render() {
     return (
       <Picker

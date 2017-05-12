@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import Animation from 'lottie-react-native';
 import PlayerControls from './PlayerControls';
-import ExamplePicker from './ExamplePicker';
+import Picker from './Picker';
 
 const makeExample = (name, getJson) => ({ name, getJson });
 const EXAMPLES = [
@@ -108,7 +108,7 @@ export default class YoloerMaps extends React.Component {
 
     return (
       <View style={StyleSheet.absoluteFill}>
-        <ExamplePicker
+        <Picker
           example={this.state.example}
           examples={EXAMPLES}
           onChange={(example) => this.setState({ example })}
