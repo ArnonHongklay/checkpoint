@@ -3866,19 +3866,11 @@ react-native-dotenv@0.0.2:
   dependencies:
     babel-plugin-dotenv "^0.0.1"
 
-react-native-maps@^0.15.0:
-  version "0.15.2"
-  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.15.2.tgz#4f63b9501b25d124f0ef1839529e54a6461c2c49"
-
 react-native-navigation@^1.1.79:
   version "1.1.79"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.79.tgz#177a7283f26ed82b84ef789fa44c1061429731d8"
   dependencies:
     lodash "4.x.x"
-
-react-native-parallax-scroll-view@^0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/react-native-parallax-scroll-view/-/react-native-parallax-scroll-view-0.19.0.tgz#23b9af1f13249a610f4641e2582a58997df7d80a"
 
 react-native-vector-icons@^4.1.1:
   version "4.1.1"

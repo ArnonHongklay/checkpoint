@@ -3,14 +3,13 @@ package com.yoloerguide;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-//import com.oblador.vectoricons.VectorIconsPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.reactnativenavigation.NavigationApplication;
 //import com.reactnativenavigation.NavigationReactPackage;
-//import com.airbnb.android.react.maps.MapsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.reactnativenavigation.NavigationApplication;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,8 +27,7 @@ public class MainApplication extends NavigationApplication {
 //      return Arrays.<ReactPackage>asList(
 //          new MainReactPackage(),
 //            new VectorIconsPackage(),
-//            new NavigationReactPackage(),
-//            new MapsPackage()
+//            new NavigationReactPackage()
 //      );
 //    }
 //  };
@@ -45,7 +43,6 @@ public class MainApplication extends NavigationApplication {
 //    SoLoader.init(this, /* native exopackage */ false);
 //  }
 
-
   @Override
   public boolean isDebug() {
     // Make sure you are using BuildConfig from your own application
@@ -56,7 +53,7 @@ public class MainApplication extends NavigationApplication {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
-            // eg. new VectorIconsPackage()
+            new VectorIconsPackage()
     );
   }
 
