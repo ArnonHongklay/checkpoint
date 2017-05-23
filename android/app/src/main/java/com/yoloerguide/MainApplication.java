@@ -1,4 +1,4 @@
-package com.yoloermaps;
+package com.yoloerguide;
 
 import android.app.Application;
 
