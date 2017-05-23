@@ -1,14 +1,11 @@
 /* eslint-disable global-require */
-import React, { PropTypes } from 'react';
-import {
-  Picker,
-  Platform,
-} from 'react-native';
+import React, { PropTypes } from "react";
+import { Picker, Platform } from "react-native";
 
 const propTypes = {
   example: PropTypes.any,
   onChange: PropTypes.func,
-  examples: PropTypes.any,
+  examples: PropTypes.any
 };
 
 export default class Picker extends React.Component {
@@ -20,17 +17,15 @@ export default class Picker extends React.Component {
         style={{
           marginBottom: Platform.select({
             ios: -30,
-            android: 0,
-          }),
+            android: 0
+          })
         }}
       >
-        {Object.keys(this.props.examples).map(name => this.props.examples[name]).map(ex => (
-          <Picker.Item
-            key={ex.name}
-            label={ex.name}
-            value={ex.name}
-          />
-        ))}
+        {Object.keys(this.props.examples)
+          .map(name => this.props.examples[name])
+          .map(ex => (
+            <Picker.Item key={ex.name} label={ex.name} value={ex.name} />
+          ))}
       </Picker>
     );
   }

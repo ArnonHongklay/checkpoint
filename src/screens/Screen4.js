@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
 import Container from '../containers/index';
 
 class Screen extends Component {
@@ -8,12 +7,7 @@ class Screen extends Component {
   };
 
   render() {
-    return (
-      <Container
-        backgroundColor="#01446b"
-        onPress={this.handlePress}
-      />
-    );
+    return <Container backgroundColor="#01446b" onPress={this.handlePress} />;
   }
 }
 

@@ -1,25 +1,29 @@
 /* eslint-disable global-require */
-import React from 'react';
-import {
-  View,
-  Animated,
-  StyleSheet,
-} from 'react-native';
-import Animation from 'lottie-react-native';
-import PlayerControls from './PlayerControls';
-import Picker from './Picker';
+import React from "react";
+import { View, Animated, StyleSheet } from "react-native";
+import Animation from "lottie-react-native";
+import PlayerControls from "./PlayerControls";
+import Picker from "./Picker";
 
 const makeExample = (name, getJson) => ({ name, getJson });
 const EXAMPLES = [
-  makeExample('Hamburger Arrow', () => require('./animations/HamburgerArrow.json')),
-  makeExample('Line Animation', () => require('./animations/LineAnimation.json')),
-  makeExample('Lottie Logo 1', () => require('./animations/LottieLogo1.json')),
-  makeExample('Lottie Logo 2', () => require('./animations/LottieLogo2.json')),
-  makeExample('Lottie Walkthrough', () => require('./animations/LottieWalkthrough.json')),
-  makeExample('Pin Jump', () => require('./animations/PinJump.json')),
-  makeExample('Twitter Heart', () => require('./animations/TwitterHeart.json')),
-  makeExample('Watermelon', () => require('./animations/Watermelon.json')),
-  makeExample('Motion Corpse', () => require('./animations/MotionCorpse-Jrcanest.json')),
+  makeExample("Hamburger Arrow", () =>
+    require("./animations/HamburgerArrow.json")
+  ),
+  makeExample("Line Animation", () =>
+    require("./animations/LineAnimation.json")
+  ),
+  makeExample("Lottie Logo 1", () => require("./animations/LottieLogo1.json")),
+  makeExample("Lottie Logo 2", () => require("./animations/LottieLogo2.json")),
+  makeExample("Lottie Walkthrough", () =>
+    require("./animations/LottieWalkthrough.json")
+  ),
+  makeExample("Pin Jump", () => require("./animations/PinJump.json")),
+  makeExample("Twitter Heart", () => require("./animations/TwitterHeart.json")),
+  makeExample("Watermelon", () => require("./animations/Watermelon.json")),
+  makeExample("Motion Corpse", () =>
+    require("./animations/MotionCorpse-Jrcanest.json")
+  )
 ].reduce((acc, e) => {
   // eslint-disable-next-line no-param-reassign
   acc[e.name] = e;
@@ -34,8 +38,8 @@ export default class YoloerMaps extends React.Component {
       progress: new Animated.Value(0),
       config: {
         duration: 3000,
-        imperative: false,
-      },
+        imperative: false
+      }
     };
     this.onValueChange = this.onValueChange.bind(this);
     this.onPlayPress = this.onPlayPress.bind(this);
@@ -54,7 +58,7 @@ export default class YoloerMaps extends React.Component {
       this.state.progress.setValue(0);
       Animated.timing(this.state.progress, {
         toValue: 1,
-        duration: this.state.config.duration,
+        duration: this.state.config.duration
       }).start(({ finished }) => {
         if (finished) this.forceUpdate();
       });
@@ -68,7 +72,7 @@ export default class YoloerMaps extends React.Component {
       this.state.progress.setValue(1);
       Animated.timing(this.state.progress, {
         toValue: 0,
-        duration: this.state.config.duration,
+        duration: this.state.config.duration
       }).start(({ finished }) => {
         if (finished) this.forceUpdate();
       });
@@ -84,12 +88,12 @@ export default class YoloerMaps extends React.Component {
       <View
         style={{
           flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderColor: '#000',
+          justifyContent: "center",
+          alignItems: "center",
+          borderColor: "#000",
           borderWidth: 1,
-          backgroundColor: '#dedede',
-          marginVertical: 10,
+          backgroundColor: "#dedede",
+          marginVertical: 10
         }}
       >
         <View>
@@ -97,7 +101,7 @@ export default class YoloerMaps extends React.Component {
             ref={this.setAnim}
             style={{
               width: 200,
-              height: 200,
+              height: 200
             }}
             source={EXAMPLES[this.state.example].getJson()}
             progress={this.state.progress}
@@ -111,7 +115,7 @@ export default class YoloerMaps extends React.Component {
         <Picker
           example={this.state.example}
           examples={EXAMPLES}
-          onChange={(example) => this.setState({ example })}
+          onChange={example => this.setState({ example })}
         />
         {playerWindow}
         <PlayerControls
