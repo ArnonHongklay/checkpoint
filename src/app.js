@@ -21,11 +21,11 @@ export default () => {
         title: 'Screen One',
       },
       {
-        label: 'Two',
+        label: 'Location',
         screen: 'Screen2',
         icon: require('./images/icon2.png'),
         selectedIcon: require('./images/icon2_selected.png'),
-        title: 'Screen Two',
+        title: 'Location Map',
       },
     ],
   });
