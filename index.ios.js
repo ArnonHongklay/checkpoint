@@ -1,10 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+/* eslint-disable no-unused-vars */
+import App from './src/app';
 
-import { AppRegistry } from 'react-native'
-import YoloerMaps from './app/YoloerMaps'
-
-AppRegistry.registerComponent('YoloerMaps', () => YoloerMaps)
+const app = new App();
