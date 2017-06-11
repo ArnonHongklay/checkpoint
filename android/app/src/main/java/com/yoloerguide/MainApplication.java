@@ -3,6 +3,7 @@ package com.yoloerguide;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativenavigation.NavigationApplication;
 //import com.reactnativenavigation.NavigationReactPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends NavigationApplication {
 //    protected List<ReactPackage> getPackages() {
 //      return Arrays.<ReactPackage>asList(
 //          new MainReactPackage(),
+//            new MapsPackage(),
 //            new VectorIconsPackage(),
 //            new NavigationReactPackage()
 //      );
@@ -53,6 +55,7 @@ public class MainApplication extends NavigationApplication {
     // Add additional packages you require here
     // No need to add RnnPackage and MainReactPackage
     return Arrays.<ReactPackage>asList(
+            new MapsPackage(),
             new VectorIconsPackage()
     );
   }
