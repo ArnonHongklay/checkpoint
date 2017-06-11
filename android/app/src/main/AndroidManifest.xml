@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yoloermaps"
+    package="com.yoloerguide"
     android:versionCode="1"
     android:versionName="1.0">
 
@@ -9,6 +9,10 @@
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="22" />
+
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyAn_8jq-e4Je1i3XspMCurKoJjWqggZn3Y"/>
 
     <application
       android:name=".MainApplication"
