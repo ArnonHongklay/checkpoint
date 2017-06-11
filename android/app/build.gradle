@@ -67,12 +67,6 @@ import com.android.build.OutputFile
 
 apply from: "../../node_modules/react-native/react.gradle"
 
-project.ext.vectoricons = [
-        iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ]
-]
-
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
-
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -89,11 +83,11 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.yoloerguide"
+        applicationId "com.yolohuntguide"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -132,17 +126,8 @@ android {
 }
 
 dependencies {
-//    compile project(':react-native-maps')
-    compile(project(':react-native-maps')){
-        exclude group: 'com.google.android.gms', module: 'play-services-base'
-        exclude group: 'com.google.android.gms', module: 'play-services-maps'
-    }
-    compile 'com.google.android.gms:play-services-base:10.0.1'
-    compile 'com.google.android.gms:play-services-maps:10.0.1'
-    compile project(':react-native-vector-icons')
-    compile project(':react-native-navigation')
     compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:25.3.1"
+    compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
 }
 
