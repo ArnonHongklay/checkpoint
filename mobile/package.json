@@ -1,5 +1,5 @@
 {
-  "name": "YoloHuntGuide",
+  "name": "YoloHuntMaps",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "firebase": "^4.0.0",
-    "react": "16.0.0-alpha.6",
-    "react-native": "^0.44.0",
+    "react": "16.0.0-alpha.12",
+    "react-native": "0.46.0",
     "react-native-animatable": "^1.2.0",
     "react-native-maps": "^0.15.2",
     "react-native-navigation": "^1.1.79",

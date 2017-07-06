@@ -1,4 +1,4 @@
-package com.yolohuntguide;
+package com.yolohuntmaps;
 
 import android.app.Application;
 

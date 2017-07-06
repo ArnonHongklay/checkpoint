@@ -16,11 +16,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface YoloHuntGuideTests : XCTestCase
+@interface YoloHuntMapsTests : XCTestCase
 
 @end
 
-@implementation YoloHuntGuideTests
+@implementation YoloHuntMapsTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
