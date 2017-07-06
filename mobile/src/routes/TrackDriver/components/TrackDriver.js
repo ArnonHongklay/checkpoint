@@ -8,7 +8,7 @@ import DriverFound from './DriverFound';
 import DriverFooterProfile from './DriverFooterProfile';
 import DriverOnTheWayFooter from './DriverOnTheWayFooter';
 
-const carMarker = require('../../../../assets/img/carMarker.png');
+const carMarker = require('../../../../assets/images/carMarker.png');
 
 class TrackDriver extends React.Component {
   componentDidMount() {

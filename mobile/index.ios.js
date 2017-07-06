@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
-import Root from './app/main';
+import Root from './src/main';
 
 export default class YoloHuntMaps extends Component {
   render() {

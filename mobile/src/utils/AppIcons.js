@@ -5,9 +5,8 @@ import { Platform, PixelRatio } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const navIconSize = __DEV__ === false && Platform.OS === 'android'
-  ? PixelRatio.getPixelSizeForLayoutSize(40)
-  : 40; // eslint-disable-line
+const navIconSize =
+  __DEV__ === false && Platform.OS === 'android' ? PixelRatio.getPixelSizeForLayoutSize(40) : 40; // eslint-disable-line
 const replaceSuffixPattern = /--(active|big|small|very-big)/g;
 const icons = {
   'ios-arrow-round-down': [navIconSize],

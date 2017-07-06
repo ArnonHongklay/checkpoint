@@ -11,8 +11,8 @@ import Fare from './Fare';
 import Fab from './Fab';
 import FindDriver from './FindDriver';
 
-const taxiLogo = require('../../../../assets/img/taxi_logo_white.png');
-const carMarker = require('../../../../assets/img/carMarker.png');
+const taxiLogo = require('../../../../assets/images/taxi_logo_white.png');
+const carMarker = require('../../../../assets/images/carMarker.png');
 
 class Home extends React.Component {
   componentDidMount() {
@@ -35,7 +35,9 @@ class Home extends React.Component {
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     };
+
     const { status } = this.props.booking;
+
     return (
       <Container>
         {(status !== 'pending' &&

@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
+import { Provider } from 'react-redux';
 import { Router } from 'react-native-router-flux';
 
 import scenes from '../routes/scenes';
-
-import { Provider } from 'react-redux';
 
 export default class Container extends Component {
   static propTypes = {
     store: PropTypes.object.isRequired,
   };
+
   render() {
     return (
       <Provider store={this.props.store}>

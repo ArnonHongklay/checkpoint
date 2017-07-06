@@ -84,7 +84,6 @@ class Map extends React.Component {
             image={this.state.marker2 ? flagBlueImg : flagPinkImg}
           />
         </MapView>
-
       </View>
     );
   }
