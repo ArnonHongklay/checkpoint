@@ -4,8 +4,5 @@
   },
   "hosting": {
     "public": "client/build"
-  },
-  "functions": {
-    "source": "server"
   }
 }

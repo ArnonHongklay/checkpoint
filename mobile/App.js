@@ -1,185 +1,105 @@
-import React from 'react';
-import {
-  Platform,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  Text,
-  Switch,
-} from 'react-native';
-import { PROVIDER_GOOGLE, PROVIDER_DEFAULT } from 'react-native-maps';
-import DisplayLatLng from './app/components/DisplayLatLng';
-import ViewsAsMarkers from './app/components/ViewsAsMarkers';
-import EventListener from './app/components/EventListener';
-import MarkerTypes from './app/components/MarkerTypes';
-import DraggableMarkers from './app/components/DraggableMarkers';
-import PolygonCreator from './app/components/PolygonCreator';
-import PolylineCreator from './app/components/PolylineCreator';
-import AnimatedViews from './app/components/AnimatedViews';
-import AnimatedMarkers from './app/components/AnimatedMarkers';
-import Callouts from './app/components/Callouts';
-import Overlays from './app/components/Overlays';
-import DefaultMarkers from './app/components/DefaultMarkers';
-import CustomMarkers from './app/components/CustomMarkers';
-import CachedMap from './app/components/CachedMap';
-import LoadingMap from './app/components/LoadingMap';
-import TakeSnapshot from './app/components/TakeSnapshot';
-import FitToSuppliedMarkers from './app/components/FitToSuppliedMarkers';
-import FitToCoordinates from './app/components/FitToCoordinates';
-import LiteMapView from './app/components/LiteMapView';
-import CustomTiles from './app/components/CustomTiles';
-import ZIndexMarkers from './app/components/ZIndexMarkers';
-import StaticMap from './app/components/StaticMap';
-import MapStyle from './app/components/MapStyle';
-import LegalLabel from './app/components/LegalLabel';
-import SetNativePropsOverlays from './app/components/SetNativePropsOverlays';
-import CustomOverlay from './app/components/CustomOverlay';
-import BugMarkerWontUpdate from './app/components/BugMarkerWontUpdate';
+/* eslint-disable no-unused-vars */
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { Navigation } from 'react-native-navigation';
 
-const IOS = Platform.OS === 'ios';
-const ANDROID = Platform.OS === 'android';
+import { registerScreens } from './app/screens';
+import { iconsMap, iconsLoaded } from './app/utils/AppIcons';
 
-function makeExampleMapper(useGoogleMaps) {
-  if (useGoogleMaps) {
-    return example => [example[0], [example[1], example[3]].filter(Boolean).join(' ')];
-  }
-  return example => example;
-}
+import Screen1 from './app/screens/Screen1';
+import MapScreen from './app/screens/MapScreen';
+import Screen3 from './app/screens/Screen3';
+import Screen4 from './app/screens/Screen4';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+export default () => {
+  Navigation.registerComponent('Screen1', () => Screen1);
+  Navigation.registerComponent('MapScreen', () => MapScreen);
+  Navigation.registerComponent('Screen3', () => Screen3);
+  Navigation.registerComponent('Screen4', () => Screen4);
 
-    this.state = {
-      Component: null,
-      useGoogleMaps: ANDROID,
-    };
-  }
+  Navigation.startTabBasedApp({
+    tabs: [
+      {
+        label: 'One',
+        screen: 'Screen1',
+        icon: require('./images/icon1.png'),
+        selectedIcon: require('./images/icon1_selected.png'),
+        title: 'Screen One',
+      },
+      {
+        label: 'Location',
+        screen: 'MapScreen',
+        icon: require('./images/icon2.png'),
+        selectedIcon: require('./images/icon2_selected.png'),
+        title: 'Location Map',
+      },
+    ],
+  });
+};
 
-  renderExample([Component, title]) {
-    return (
-      <TouchableOpacity
-        key={title}
-        style={styles.button}
-        onPress={() => this.setState({ Component })}
-      >
-        <Text>
-          {title}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-
-  renderBackButton() {
-    return (
-      <TouchableOpacity style={styles.back} onPress={() => this.setState({ Component: null })}>
-        <Text style={{ fontWeight: 'bold', fontSize: 30 }}>&larr;</Text>
-      </TouchableOpacity>
-    );
-  }
-
-  renderGoogleSwitch() {
-    return (
-      <View>
-        <Text>Use GoogleMaps?</Text>
-        <Switch
-          onValueChange={value => this.setState({ useGoogleMaps: value })}
-          style={{ marginBottom: 10 }}
-          value={this.state.useGoogleMaps}
-        />
-      </View>
-    );
-  }
-
-  renderExamples(examples) {
-    const { Component, useGoogleMaps } = this.state;
-
-    return (
-      <View style={styles.container}>
-        {Component && <Component provider={useGoogleMaps ? PROVIDER_GOOGLE : PROVIDER_DEFAULT} />}
-        {Component && this.renderBackButton()}
-        {!Component &&
-          <ScrollView
-            style={StyleSheet.absoluteFill}
-            contentContainerStyle={styles.scrollview}
-            showsVerticalScrollIndicator={false}
-          >
-            {IOS && this.renderGoogleSwitch()}
-            {examples.map(example => this.renderExample(example))}
-          </ScrollView>}
-      </View>
-    );
-  }
-
-  render() {
-    return this.renderExamples(
-      [
-        // [<component>, <component description>, <Google compatible>, <Google add'l description>]
-        [StaticMap, 'StaticMap', true],
-        [DisplayLatLng, 'Tracking Position', true, '(incomplete)'],
-        [ViewsAsMarkers, 'Arbitrary Views as Markers', true],
-        [EventListener, 'Events', true, '(incomplete)'],
-        [MarkerTypes, 'Image Based Markers', true],
-        [DraggableMarkers, 'Draggable Markers', true],
-        [PolygonCreator, 'Polygon Creator', true],
-        [PolylineCreator, 'Polyline Creator', true],
-        [AnimatedViews, 'Animating with MapViews'],
-        [AnimatedMarkers, 'Animated Marker Position'],
-        [Callouts, 'Custom Callouts', true],
-        [Overlays, 'Circles, Polygons, and Polylines', true],
-        [DefaultMarkers, 'Default Markers', true],
-        [CustomMarkers, 'Custom Markers', true],
-        [TakeSnapshot, 'Take Snapshot', true, '(incomplete)'],
-        [CachedMap, 'Cached Map'],
-        [LoadingMap, 'Map with loading'],
-        [FitToSuppliedMarkers, 'Focus Map On Markers', true],
-        [FitToCoordinates, 'Fit Map To Coordinates', true],
-        [LiteMapView, 'Android Lite MapView'],
-        [CustomTiles, 'Custom Tiles', true],
-        [ZIndexMarkers, 'Position Markers with Z-index', true],
-        [MapStyle, 'Customize the style of the map', true],
-        [LegalLabel, 'Reposition the legal label', true],
-        [SetNativePropsOverlays, 'Update native props', true],
-        [CustomOverlay, 'Custom Overlay Component', true],
-        [BugMarkerWontUpdate, "BUG: Marker Won't Update (Android)", true],
-      ]
-        // Filter out examples that are not yet supported for Google Maps on iOS.
-        .filter(example => ANDROID || (IOS && (example[2] || !this.state.useGoogleMaps)))
-        .map(makeExampleMapper(IOS && this.state.useGoogleMaps)),
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  scrollview: {
-    alignItems: 'center',
-    paddingVertical: 40,
-  },
-  button: {
-    flex: 1,
-    marginTop: 10,
-    backgroundColor: 'rgba(220,220,220,0.7)',
-    paddingHorizontal: 18,
-    paddingVertical: 12,
-    borderRadius: 20,
-  },
-  back: {
-    position: 'absolute',
-    top: 20,
-    left: 12,
-    backgroundColor: 'rgba(255,255,255,0.4)',
-    padding: 12,
-    borderRadius: 20,
-    width: 80,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-module.exports = App;
+//
+//
+// registerScreens();
+//
+// const navigatorStyle = {
+//   navBarTranslucent: true,
+//   drawUnderNavBar: true,
+//   navBarTextColor: '#ffffff',
+//   navBarButtonColor: '#ffffff',
+//   statusBarTextColorScheme: 'light',
+// };
+//
+// const iconInsets = {
+//   top: 6,
+//   left: 0,
+//   bottom: -6,
+//   right: 0,
+// };
+//
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//
+//     iconsLoaded.then(() => {
+//       this.startApp();
+//     });
+//   }
+//
+//   startApp() {
+//     Navigation.startTabBasedApp({
+//       tabs: [
+//         {
+//           title: 'Guide',
+//           screen: 'MapScreen',
+//           icon: iconsMap['ios-pin-outline'],
+//           selectedIcon: iconsMap['ios-pin'],
+//           navigatorStyle,
+//           iconInsets,
+//           navigatorButtons: {
+//             rightButtons: [
+//               {
+//                 title: 'Search',
+//                 id: 'search',
+//                 icon: iconsMap['ios-search'],
+//               },
+//             ],
+//           },
+//         },
+//         {
+//           screen: 'Screen1',
+//           icon: iconsMap['ios-settings-outline'],
+//           selectedIcon: iconsMap['ios-settings'],
+//           // navigatorStyle,
+//           iconInsets,
+//         },
+//       ],
+//       tabsStyle: {
+//         tabBarButtonColor: 'white',
+//         tabBarSelectedButtonColor: 'white',
+//         tabBarBackgroundColor: 'black',
+//       },
+//     });
+//   }
+// }
+//
+// export default App;
