@@ -1,21 +1,49 @@
 /* eslint-disable no-unused-vars */
-// import App from './app';
-//
-// const app = new App();
-
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, Dimensions, StyleSheet, Text, View, ScrollView } from 'react-native';
+import NavigationBar from 'react-native-navbar';
+// import MapView from 'react-native-maps';
+
+const { width, height } = Dimensions.get('window');
+
+const ASPECT_RATIO = width / height;
+const LATITUDE = 101.78825;
+const LONGITUDE = -122.4324;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
+const SAMPLE_REGION = {
+  latitude: LATITUDE,
+  longitude: LONGITUDE,
+  latitudeDelta: LATITUDE_DELTA,
+  longitudeDelta: LONGITUDE_DELTA,
+};
 
 export default class YoloHuntMaps extends Component {
+  state = {
+    region: SAMPLE_REGION,
+  };
+
+  onRegionChange(region) {
+    this.setState({ region });
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit index.ios.js</Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View>
+        <NavigationBar
+          title={{ title: 'YoloHunt Maps', tintColor: 'black' }}
+          leftButton={{ title: '' }}
+          rightButton={{ title: 'Add' }}
+          style={{ backgroundColor: 'white' }}
+          statusBar={{ tintColor: 'white' }}
+        />
+        {/* <MapView
+          style={styles.welcome}
+          onRegionChange={() => {}}
+          onRegionChangeComplete={() => {}}
+          showsUserLocation
+        /> */}
       </View>
     );
   }
@@ -29,14 +57,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+    width: 375,
+    height: 600,
   },
 });
 
