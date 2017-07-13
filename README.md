@@ -1,2 +1,0 @@
-# YoloHunt-Maps
-YoloHunt Maps
