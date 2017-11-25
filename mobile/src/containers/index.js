@@ -1,26 +1,19 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Provider } from 'react-redux';
+import { Router } from 'react-native-router-flux';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: '500',
-  },
-});
+import scenes from '../routes/scenes';
 
-const Container = ({ backgroundColor, onPress, children }) => (
-  <View style={[styles.container, { backgroundColor }]}>
-    <TouchableOpacity onPress={onPress}>
-      <Text style={styles.text}>{backgroundColor}</Text>
-    </TouchableOpacity>
-    {children}
-  </View>
-);
+export default class Container extends Component {
+  static propTypes = {
+    store: PropTypes.object.isRequired,
+  };
 
-export default Container;
+  render() {
+    return (
+      <Provider store={this.props.store}>
+        <Router scenes={scenes} />
+      </Provider>
+    );
+  }
+}
