@@ -1,21 +1,25 @@
 {
-  "name": "yolohunt-maps",
-  "version": "0.1.0",
+  "name": "checkpoint",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "Non Madden <nonmadden@arnonhongklay.local>",
   "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
   "dependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint-config-airbnb": "^15.0.2",
-    "eslint-plugin-prefer-object-spread": "^1.2.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "nuxt": "^1.0.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0"
   }
 }
