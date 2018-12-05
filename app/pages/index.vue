@@ -12,13 +12,14 @@
 </template>
 
 <script>
-import fetch from 'isomorphic-fetch'
+// import fetch from 'isomorphic-fetch'
+import axios from 'axios'
 import AppLogo from '~/components/AppLogo.vue'
 
 export default {
   async asyncData(){
-    const response = await fetch('https://mercialist-checkpoint.firebaseio.com/facts.json')
-    const facts = await response.json()
+    const response = await axios.get('https://nuxt-ssr.firebaseio.com/facts.json')
+    const facts = await response.data
     return { facts }
   },
   components: {

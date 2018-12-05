@@ -10,8 +10,6 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' },
-      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
@@ -33,23 +31,10 @@ module.exports = {
     STORAGEBUCKET: process.env.STORAGEBUCKET,
     MESSAGINGSENDERID: process.env.MESSAGINGSENDERID
   },
-  // buildDir: '../functions/nuxt',
   build: {
-    publicPath: '/assets/',
-    vendor: ['isomorphic-fetch'],
+    publicPath: '/public/',
+    vendor: ['axios'],
     extractCSS: true,
-    babel: {
-      // presets: [
-      //   'es2015',
-      //   'stage-0'
-      // ],
-      // plugins: [
-      //   ["transform-runtime", {
-      //     "polyfill": true,
-      //     "regenerator": true
-      //   }]
-      // ]
-    },
     /*
     ** Run ESLint on save
     */

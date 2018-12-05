@@ -1,35 +1,33 @@
 const functions = require('firebase-functions')
-const { Nuxt } = require('nuxt')
 const express = require('express')
+const { Nuxt } = require('nuxt')
 
 const app = express()
 
 const config = {
   dev: false,
-  buildDir: 'nuxt',
+  buildDir: '../.nuxt',
   build: {
-    publicPath: '/assets'
+    publicPath: '/'
   }
-};
+}
 
-const nuxt = new Nuxt(config);
+const nuxt = new Nuxt(config)
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
- response.send("Hello from Firebase!");
-});
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//  response.send("Hello from Firebase!");
+// });
 
-// function handleRequest(req, res) {
-//   res.set("Cache-Control", "public, max-age=300, s-maxage=600")
-//   nuxt.renderRoute('/')
-//     // eslint-disable-next-line promise/always-return
-//     .then(result => {
-//       res.send(result.html)
-//     })
-//     .catch(e => {
-//       res.send(e)
-//     })
-// }
+function handleRequest(req, res) {
+  res.set('Cache-Control', 'public, max-age=600, s-maxage=1200')
+  // eslint-disable-next-line promise/always-return
+  nuxt.renderRoute('/').then(result => {
+    res.send(result.html)
+  }).catch(e => {
+    res.send(e)
+  })
+}
 
-// app.set('*', handleRequest)
+app.get('*', handleRequest)
 
-// exports.checkpoint = functions.https.onRequest(app)
+exports.checkpoint = functions.https.onRequest(app)
